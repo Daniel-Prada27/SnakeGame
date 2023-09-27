@@ -56,7 +56,7 @@ tr.border-bottom th {
 
 tr.border-bottom td {
     color: black;
-    border-bottom: 2px solid lightcoral;
+    border-bottom: 2px solid darkcyan;
 }
 
 /* https://snipplr.com/view/70755/css--spacing-between-thead-and-tbody */
