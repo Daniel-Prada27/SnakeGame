@@ -1,0 +1,58 @@
+body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+
+}
+
+#navBar {
+    display: flex;
+    flex-direction: row;
+    background-color: #581223;
+    color: white;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+#navLinks {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+}
+
+.links {
+    margin-left: 30px;
+}
+
+.links, a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.account-icon {
+    /* align-self: flex-end; */
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+#tabla-puntajes {
+    table-layout: fixed;
+    width: 100%;
+    text-align: center;
+    border-spacing: 15px;
+    border: 1px solid black;
+}
+
+tr {
+    border-bottom: 2px solid darkcyan;
+}
+
+/* https://snipplr.com/view/70755/css--spacing-between-thead-and-tbody */
+/* tbody::before { 
+    line-height:1em;
+    content:"-";
+    color:white; 
+    display:block;
+} */
+
