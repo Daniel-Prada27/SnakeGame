@@ -3,16 +3,17 @@ body {
     height: 100vh;
     margin: 0;
     flex-direction: column;
-
+    background-color: white;
 }
 
 #navBar {
     display: flex;
     flex-direction: row;
-    background-color: #581223;
+    background-color: #10361C;
     color: white;
     padding: 10px;
     margin-bottom: 50px;
+    
 }
 
 #navLinks {
@@ -38,14 +39,23 @@ body {
 
 #tabla-puntajes {
     table-layout: fixed;
-    width: 100%;
+    width: 80%;
     text-align: center;
     border-spacing: 15px;
+    background-color: lightblue;
+    margin-right: 10%;
+    margin-left: 10%;
     /* border: 1px solid black; */
     /* border-collapse: collapse; */
 }
 
+tr.border-bottom th {
+    color: black;
+    border-bottom: 2px solid white;
+}
+
 tr.border-bottom td {
+    color: black;
     border-bottom: 2px solid darkcyan;
 }
 

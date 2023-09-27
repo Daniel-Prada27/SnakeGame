@@ -5,17 +5,24 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: white;
 }
-
+header{
+    text-align: center;
+    color: black;
+}
 .login-container {
     display: flex;
     align-self: center;
     border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-right: 70px;
     margin-bottom: 30px;
     padding: 60px 40px 60px 40px;
-    /* background-color: ; */
+    background-color: lightblue;
+    color: black;
+    text-align: center;
+    font-weight: bold;
 }
 
 /* form {
