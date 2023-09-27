@@ -41,10 +41,11 @@ body {
     width: 100%;
     text-align: center;
     border-spacing: 15px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    /* border-collapse: collapse; */
 }
 
-tr {
+tr.border-bottom td {
     border-bottom: 2px solid darkcyan;
 }
 
