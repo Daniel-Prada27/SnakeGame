@@ -55,3 +55,35 @@ function moveHeadDown() {
 
     boardAppend(newHead);
 }
+
+function moveHeadUp() {
+    let newHead = createNode();
+    setRowStart(newHead, parseInt(head.style.gridRowStart) - 1)
+    setRowEnd(newHead, parseInt(head.style.gridRowEnd) - 1)
+    setColumnStart(newHead, head.style.gridColumnStart)
+    setColumnEnd(newHead, head.style.gridColumnStart)
+
+    boardAppend(newHead);
+}
+
+ function moveHeadRight() {
+    let newHead = createNode();
+
+    setRowStart(newHead, head.style.gridRowStart)
+    setRowEnd(newHead, head.style.gridRowEnd)
+    setColumnStart(newHead, parseInt(head.style.gridColumnStart) + 1)
+    setColumnEnd(newHead, parseInt(head.style.gridColumnStart) + 1)
+
+    boardAppend(newHead);
+ }
+
+ function moveHeadLeft() {
+    let newHead = createNode();
+
+    setRowStart(newHead, head.style.gridRowStart)
+    setRowEnd(newHead, head.style.gridRowEnd)
+    setColumnStart(newHead, parseInt(head.style.gridColumnStart) - 1)
+    setColumnEnd(newHead, parseInt(head.style.gridColumnStart) - 1)
+
+    boardAppend(newHead);
+ }
