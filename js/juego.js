@@ -11,6 +11,7 @@ function createStartNode() {
     setColumnStart(node, 11)
     setColumnEnd(node, 12)
 
+    node.classList.add('position-11-11');
     boardAppend(node);
 }
 
@@ -35,7 +36,7 @@ function setRowEnd(node, rowEnd) {
 }
 
 function setColumnStart(node, columnStart) {
-    node.style.gridColumnStart= columnStart;
+    node.style.gridColumnStart = columnStart;
 }
 
 function setColumnEnd(node, columnEnd) {
@@ -48,25 +49,46 @@ function removeTail() {
 
 function moveHeadDown() {
     let newHead = createNode();
+
+
     setRowStart(newHead, parseInt(head.style.gridRowStart) + 1)
     setRowEnd(newHead, parseInt(head.style.gridRowEnd) + 1)
     setColumnStart(newHead, head.style.gridColumnStart)
     setColumnEnd(newHead, head.style.gridColumnStart)
+
+    let newPosition = document.querySelector(`.position-${newHead.style.gridRowStart}-${newHead.style.gridColumnStart}`)
+    
+    if ((parseInt(head.style.gridRowStart) == 21) || (newPosition != null)) {
+        console.log("YOU LOSE");
+        return;
+    }
+
+    newHead.classList.add(`position-${newHead.style.gridRowStart}-${newHead.style.gridColumnStart}`)
 
     boardAppend(newHead);
 }
 
 function moveHeadUp() {
     let newHead = createNode();
+
     setRowStart(newHead, parseInt(head.style.gridRowStart) - 1)
     setRowEnd(newHead, parseInt(head.style.gridRowEnd) - 1)
     setColumnStart(newHead, head.style.gridColumnStart)
     setColumnEnd(newHead, head.style.gridColumnStart)
 
+    let newPosition = document.querySelector(`.position-${newHead.style.gridRowStart}-${newHead.style.gridColumnStart}`)
+    
+    if ((parseInt(head.style.gridRowStart) == 1) || (newPosition != null)) {
+        console.log("YOU LOSE");
+        return;
+    }
+
+    newHead.classList.add(`position-${newHead.style.gridRowStart}-${newHead.style.gridColumnStart}`)
+
     boardAppend(newHead);
 }
 
- function moveHeadRight() {
+function moveHeadRight() {
     let newHead = createNode();
 
     setRowStart(newHead, head.style.gridRowStart)
@@ -74,10 +96,19 @@ function moveHeadUp() {
     setColumnStart(newHead, parseInt(head.style.gridColumnStart) + 1)
     setColumnEnd(newHead, parseInt(head.style.gridColumnStart) + 1)
 
-    boardAppend(newHead);
- }
+    let newPosition = document.querySelector(`.position-${newHead.style.gridRowStart}-${newHead.style.gridColumnStart}`)
+    
+    if ((parseInt(head.style.gridColumnStart) == 21) || (newPosition != null)) {
+        console.log("YOU LOSE");
+        return;
+    }
 
- function moveHeadLeft() {
+    newHead.classList.add(`position-${newHead.style.gridRowStart}-${newHead.style.gridColumnStart}`)
+
+    boardAppend(newHead);
+}
+
+function moveHeadLeft() {
     let newHead = createNode();
 
     setRowStart(newHead, head.style.gridRowStart)
@@ -85,5 +116,33 @@ function moveHeadUp() {
     setColumnStart(newHead, parseInt(head.style.gridColumnStart) - 1)
     setColumnEnd(newHead, parseInt(head.style.gridColumnStart) - 1)
 
+    let newPosition = document.querySelector(`.position-${newHead.style.gridRowStart}-${newHead.style.gridColumnStart}`)
+    
+    if ((parseInt(head.style.gridColumnStart) == 1) || (newPosition != null)) {
+        console.log("YOU LOSE");
+        return;
+    }
+
+    newHead.classList.add(`position-${newHead.style.gridRowStart}-${newHead.style.gridColumnStart}`)
+
     boardAppend(newHead);
- }
+}
+
+window.addEventListener('keydown', (event) => {
+    let key = event.code;
+    console.log(event.code);
+    if (key == 'ArrowRight') {
+        moveHeadRight();
+    } else if (key == 'ArrowLeft') {
+        moveHeadLeft();
+    } else if (key == 'ArrowUp') {
+        moveHeadUp();
+    } else if (key == 'ArrowDown') {
+        moveHeadDown();
+    }
+
+    
+
+})
+
+createStartNode()
