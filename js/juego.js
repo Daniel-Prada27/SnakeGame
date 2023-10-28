@@ -5,6 +5,11 @@ let head;
 
 let min = 1;
 let max = 21;
+let snakeSpeed = 99;
+
+function halt() {
+    clearMove()
+}
 
 function createStartNode() {
     let node = document.createElement('div');
@@ -52,6 +57,7 @@ function setColumnEnd(node, columnEnd) {
 
 function removeTail() {
     board.removeChild(snakeArr[0]);
+    snakeArr.shift()
 }
 
 function moveHeadDown() {
@@ -66,15 +72,20 @@ function moveHeadDown() {
     let rowStart = newHead.style.gridRowStart;
     let colStart = newHead.style.gridColumnStart;
 
-    if ((parseInt(head.style.gridRowStart) == 21) || (checkForSnake(rowStart.colStart))) {
+    if ((parseInt(head.style.gridRowStart) == 21) || (checkForSnake(rowStart, colStart))) {
         console.log("YOU LOSE");
+        halt()
         return;
+    } else if (checkForFood(rowStart, colStart)) {
+        newHead.classList.add(`position-${rowStart}-${colStart}`)
+        snakeArr.push(newHead)
+        boardAppend(newHead);
+    } else {
+        newHead.classList.add(`position-${rowStart}-${colStart}`)
+        snakeArr.push(newHead)
+        boardAppend(newHead);
+        removeTail()
     }
-
-    newHead.classList.add(`position-${rowStart}-${colStart}`)
-
-    snakeArr.push(newHead)
-    boardAppend(newHead);
 }
 
 function moveHeadUp() {
@@ -90,13 +101,18 @@ function moveHeadUp() {
 
     if ((parseInt(head.style.gridRowStart) == 1) || (checkForSnake(rowStart, colStart))) {
         console.log("YOU LOSE");
+        halt()
         return;
+    } else if (checkForFood(rowStart, colStart)) {
+        newHead.classList.add(`position-${rowStart}-${colStart}`)
+        snakeArr.push(newHead)
+        boardAppend(newHead);
+    } else {
+        newHead.classList.add(`position-${rowStart}-${colStart}`)
+        snakeArr.push(newHead)
+        boardAppend(newHead);
+        removeTail()
     }
-
-    newHead.classList.add(`position-${rowStart}-${colStart}`)
-
-    snakeArr.push(newHead)
-    boardAppend(newHead);
 
 }
 
@@ -114,13 +130,18 @@ function moveHeadRight() {
 
     if ((parseInt(head.style.gridColumnStart) == 21) || (checkForSnake(rowStart, colStart))) {
         console.log("YOU LOSE");
+        halt()
         return;
+    } else if (checkForFood(rowStart, colStart)) {
+        newHead.classList.add(`position-${rowStart}-${colStart}`)
+        snakeArr.push(newHead)
+        boardAppend(newHead);
+    } else {
+        newHead.classList.add(`position-${rowStart}-${colStart}`)
+        snakeArr.push(newHead)
+        boardAppend(newHead);
+        removeTail()
     }
-
-    newHead.classList.add(`position-${rowStart}-${colStart}`)
-
-    snakeArr.push(newHead)
-    boardAppend(newHead);
 
 }
 
@@ -138,13 +159,18 @@ function moveHeadLeft() {
 
     if ((parseInt(head.style.gridColumnStart) == 1) || (checkForSnake(rowStart, colStart))) {
         console.log("YOU LOSE");
+        halt()
         return;
+    } else if (checkForFood(rowStart, colStart)) {
+        newHead.classList.add(`position-${rowStart}-${colStart}`)
+        snakeArr.push(newHead)
+        boardAppend(newHead);
+    } else {
+        newHead.classList.add(`position-${rowStart}-${colStart}`)
+        snakeArr.push(newHead)
+        boardAppend(newHead);
+        removeTail()
     }
-
-    newHead.classList.add(`position-${rowStart}-${colStart}`)
-
-    snakeArr.push(newHead)
-    boardAppend(newHead);
 
 }
 
@@ -156,7 +182,22 @@ function checkForSnake(row, col) {
     }
 
     return (newPosition.style.backgroundColor == 'red') ? true : false;
+}
 
+function checkForFood(row, col) {
+    let newPosition = document.querySelector(`.food-${row}-${col}`)
+
+    if (newPosition == null) {
+        console.log('check food null');
+        return false;
+    }
+    if (newPosition.style.backgroundColor == 'blue') {
+        board.removeChild(newPosition)
+        createFood()
+        return true;
+    }
+
+    return false;
 }
 
 window.addEventListener('keydown', (event) => {
@@ -180,24 +221,28 @@ window.addEventListener('keydown', (event) => {
 let move
 
 function goRight() {
+    moveHeadRight()
     clearMove()
-    move = setInterval(moveHeadRight, 100);
+    move = setInterval(moveHeadRight, snakeSpeed);
 
 }
 
 function goLeft() {
+    moveHeadLeft()
     clearMove()
-    move = setInterval(moveHeadLeft, 100);
+    move = setInterval(moveHeadLeft, snakeSpeed);
 }
 
 function goUp() {
+    moveHeadUp()
     clearMove()
-    move = setInterval(moveHeadUp, 100);
+    move = setInterval(moveHeadUp, snakeSpeed);
 }
 
 function goDown() {
+    moveHeadDown()
     clearMove()
-    move = setInterval(moveHeadDown, 100);
+    move = setInterval(moveHeadDown, snakeSpeed);
 
 }
 
@@ -220,6 +265,7 @@ function createFood() {
         setColumnStart(newFood, columnStart)
         setColumnEnd(newFood, columnStart + 1)
         newFood.style.backgroundColor = 'blue'
+        newFood.classList.add(`food-${rowStart}-${columnStart}`)
         board.appendChild(newFood)
 
     } else {
@@ -238,3 +284,4 @@ function getRandomIntInclusive(min, max) {
 
 
 createStartNode()
+createFood()
