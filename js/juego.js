@@ -6,6 +6,7 @@ let head;
 let min = 1;
 let max = 21;
 let snakeSpeed = 99;
+let direction;
 
 function halt() {
     clearMove()
@@ -62,7 +63,7 @@ function removeTail() {
 
 function moveHeadDown() {
     let newHead = createNode();
-
+    direction = 'down'
 
     setRowStart(newHead, parseInt(head.style.gridRowStart) + 1)
     setRowEnd(newHead, parseInt(head.style.gridRowEnd) + 1)
@@ -90,6 +91,7 @@ function moveHeadDown() {
 
 function moveHeadUp() {
     let newHead = createNode();
+    direction = 'up'
 
     setRowStart(newHead, parseInt(head.style.gridRowStart) - 1)
     setRowEnd(newHead, parseInt(head.style.gridRowEnd) - 1)
@@ -118,6 +120,7 @@ function moveHeadUp() {
 
 function moveHeadRight() {
     let newHead = createNode();
+    direction = 'right'
 
     setRowStart(newHead, head.style.gridRowStart)
     setRowEnd(newHead, head.style.gridRowEnd)
@@ -147,6 +150,7 @@ function moveHeadRight() {
 
 function moveHeadLeft() {
     let newHead = createNode();
+    direction = 'left'
 
     setRowStart(newHead, head.style.gridRowStart)
     setRowEnd(newHead, head.style.gridRowEnd)
@@ -203,16 +207,16 @@ function checkForFood(row, col) {
 window.addEventListener('keydown', (event) => {
     let key = event.code;
     console.log(event.code);
-    if (key == 'ArrowRight') {
+    if (key == 'ArrowRight' && direction != 'left') {
         // moveHeadRight();
         goRight()
-    } else if (key == 'ArrowLeft') {
+    } else if (key == 'ArrowLeft' && direction != 'right' ) {
         // moveHeadLeft();
         goLeft()
-    } else if (key == 'ArrowUp') {
+    } else if (key == 'ArrowUp' && direction != 'down') {
         // moveHeadUp();
         goUp()
-    } else if (key == 'ArrowDown') {
+    } else if (key == 'ArrowDown' && direction != 'up') {
         // moveHeadDown();
         goDown()
     }
