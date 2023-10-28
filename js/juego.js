@@ -6,6 +6,8 @@ let head;
 function createStartNode() {
     let node = document.createElement('div');
     node.style.backgroundColor = "red"
+    node.style.border = '1px solid black'
+
     setRowStart(node, 11)
     setRowEnd(node, 12)
     setColumnStart(node, 11)
@@ -23,6 +25,7 @@ function boardAppend(node) {
 function createNode() {
     let node = document.createElement('div');
     node.style.backgroundColor = "red"
+    node.style.border = '1px solid black'
     return node;
     // board.appendChild(node)
 }
@@ -57,7 +60,7 @@ function moveHeadDown() {
     setColumnEnd(newHead, head.style.gridColumnStart)
 
     let newPosition = document.querySelector(`.position-${newHead.style.gridRowStart}-${newHead.style.gridColumnStart}`)
-    
+
     if ((parseInt(head.style.gridRowStart) == 21) || (newPosition != null)) {
         console.log("YOU LOSE");
         return;
@@ -77,7 +80,7 @@ function moveHeadUp() {
     setColumnEnd(newHead, head.style.gridColumnStart)
 
     let newPosition = document.querySelector(`.position-${newHead.style.gridRowStart}-${newHead.style.gridColumnStart}`)
-    
+
     if ((parseInt(head.style.gridRowStart) == 1) || (newPosition != null)) {
         console.log("YOU LOSE");
         return;
@@ -97,7 +100,7 @@ function moveHeadRight() {
     setColumnEnd(newHead, parseInt(head.style.gridColumnStart) + 1)
 
     let newPosition = document.querySelector(`.position-${newHead.style.gridRowStart}-${newHead.style.gridColumnStart}`)
-    
+
     if ((parseInt(head.style.gridColumnStart) == 21) || (newPosition != null)) {
         console.log("YOU LOSE");
         return;
@@ -117,7 +120,7 @@ function moveHeadLeft() {
     setColumnEnd(newHead, parseInt(head.style.gridColumnStart) - 1)
 
     let newPosition = document.querySelector(`.position-${newHead.style.gridRowStart}-${newHead.style.gridColumnStart}`)
-    
+
     if ((parseInt(head.style.gridColumnStart) == 1) || (newPosition != null)) {
         console.log("YOU LOSE");
         return;
@@ -132,17 +135,56 @@ window.addEventListener('keydown', (event) => {
     let key = event.code;
     console.log(event.code);
     if (key == 'ArrowRight') {
-        moveHeadRight();
+        // moveHeadRight();
+        goRight()
     } else if (key == 'ArrowLeft') {
-        moveHeadLeft();
+        // moveHeadLeft();
+        goLeft()
     } else if (key == 'ArrowUp') {
-        moveHeadUp();
+        // moveHeadUp();
+        goUp()
     } else if (key == 'ArrowDown') {
-        moveHeadDown();
+        // moveHeadDown();
+        goDown()
     }
-
-    
-
 })
+
+let goRightInterval, goLeftInterval, goUpInterval, goDownInterval;
+let move
+
+function goRight() {
+    clearMove()
+    move = setInterval(moveHeadRight, 100);
+
+
+}
+
+function goLeft() {
+    clearMove()
+    move = setInterval(moveHeadLeft, 100);
+
+
+}
+
+function goUp() {
+    clearMove()
+    move = setInterval(moveHeadUp, 100);
+}
+
+function goDown() {
+    clearMove()
+    move = setInterval(moveHeadDown, 100);
+
+}
+
+function clearMove() {
+    clearInterval(move);
+
+    // goRightInterval = goLeftInterval = goUpInterval = goDownInterval = false
+
+}
+
+
+
 
 createStartNode()
