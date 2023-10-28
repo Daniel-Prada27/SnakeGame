@@ -1,12 +1,16 @@
 let board = document.getElementById('game-board');
+let score = document.getElementById('score');
 
 let snakeArr = []
 let head;
+
+let points = 0;
 
 let min = 1;
 let max = 21;
 let snakeSpeed = 99;
 let direction;
+let move;
 
 function halt() {
     clearMove()
@@ -192,10 +196,10 @@ function checkForFood(row, col) {
     let newPosition = document.querySelector(`.food-${row}-${col}`)
 
     if (newPosition == null) {
-        console.log('check food null');
         return false;
     }
     if (newPosition.style.backgroundColor == 'blue') {
+        sumPoints()
         board.removeChild(newPosition)
         createFood()
         return true;
@@ -204,9 +208,19 @@ function checkForFood(row, col) {
     return false;
 }
 
+function sumPoints() {
+    points += 100;
+
+    if (points < 1000) {
+        score.textContent = `SCORE: 0${points}`
+    } else {
+        score.textContent = `SCORE: ${points}`
+    }
+
+}
+
 window.addEventListener('keydown', (event) => {
     let key = event.code;
-    console.log(event.code);
     if (key == 'ArrowRight' && direction != 'left') {
         // moveHeadRight();
         goRight()
@@ -221,8 +235,6 @@ window.addEventListener('keydown', (event) => {
         goDown()
     }
 })
-
-let move
 
 function goRight() {
     moveHeadRight()

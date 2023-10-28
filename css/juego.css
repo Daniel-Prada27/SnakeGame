@@ -34,9 +34,14 @@ body {
     margin-right: 5px;
 }
 
+#score {
+    align-self: center;
+    /* margin-right: 10%; */
+}
+
 #game-board {
-    background-color: green;
-    margin-top: 50px;
+    background-color: black;
+    /* margin-top: 10px; */
     align-self: center;
     justify-self: center;
     width: 80vmin;
