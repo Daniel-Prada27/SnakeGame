@@ -1,3 +1,10 @@
+import { checkForSnake, checkForFood } from "./checkers";
+import { createNode, boardAppend, boardRemove, lose, snakeArr, head } from "./boardManipulation";
+import { setRowStart, setRowEnd, setColumnStart, setColumnEnd } from "./nodeManipulation";
+
+export let direction;
+let move;
+let snakeSpeed = 99;
 
 export function moveHeadUp() {
     let newHead = createNode();
@@ -114,4 +121,43 @@ export function moveHeadLeft() {
         removeTail();
     }
 
+}
+
+export function goRight() {
+    moveHeadRight();
+    clearMove();
+    move = setInterval(moveHeadRight, snakeSpeed);
+
+}
+
+export function goLeft() {
+    moveHeadLeft();
+    clearMove();
+    move = setInterval(moveHeadLeft, snakeSpeed);
+}
+
+export function goUp() {
+    moveHeadUp();
+    clearMove();
+    move = setInterval(moveHeadUp, snakeSpeed);
+}
+
+export function goDown() {
+    moveHeadDown();
+    clearMove();
+    move = setInterval(moveHeadDown, snakeSpeed);
+
+}
+
+function clearMove() {
+    clearInterval(move);
+}
+
+export function setDirection(newDirection) {
+    direction = newDirection;
+}
+
+function removeTail() {
+    boardRemove(snakeArr[0]);
+    snakeArr.shift();
 }
