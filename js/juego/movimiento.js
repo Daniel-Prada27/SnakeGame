@@ -149,7 +149,7 @@ export function goDown() {
 
 }
 
-function clearMove() {
+export function clearMove() {
     clearInterval(move);
 }
 
