@@ -1,5 +1,5 @@
-import { goUp, goDown, goRight, goLeft, direction } from "./movimiento";
-import { startGame } from "./boardManipulation";
+import { goUp, goDown, goRight, goLeft, direction } from "./movimiento.js";
+import { startGame } from "./boardManipulation.js";
 
 
 

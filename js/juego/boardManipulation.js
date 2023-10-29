@@ -1,7 +1,7 @@
 
-import { setDirection, clearMove } from "./movimiento";
-import { setRowStart, setRowEnd, setColumnStart, setColumnEnd} from "./nodeManipulation";
-import { setPoints, setScore, points } from "./points";
+import { setDirection, clearMove } from "./movimiento.js";
+import { setRowStart, setRowEnd, setColumnStart, setColumnEnd} from "./nodeManipulation.js";
+import { setPoints, setScore, points } from "./points.js";
 
 export let board = document.getElementById('game-board');
 

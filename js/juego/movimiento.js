@@ -1,4 +1,4 @@
-import { checkForSnake, checkForFood } from "./checkers";
+import { checkForSnake, checkForFood } from "./checkers.js";
 import { createNode, boardAppend, boardRemove, lose, snakeArr, head } from "./boardManipulation";
 import { setRowStart, setRowEnd, setColumnStart, setColumnEnd } from "./nodeManipulation";
 

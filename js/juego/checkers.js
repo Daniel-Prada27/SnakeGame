@@ -1,6 +1,6 @@
 
-import { createFood, board, snakeColor, foodColor } from "./boardManipulation";
-import { sumPoints } from "./points";
+import { createFood, board, snakeColor, foodColor } from "./boardManipulation.js";
+import { sumPoints } from "./points.js";
 
 
 
