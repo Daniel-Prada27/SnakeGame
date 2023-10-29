@@ -26,6 +26,8 @@ function resetGame() {
     board.innerHTML = '';
     snakeArr.length = 0;
     direction = null;
+    points = 0;
+    score.textContent = 'SCORE: 0000';
     createStartNode();
     createFood();
 }
