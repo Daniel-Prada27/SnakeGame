@@ -15,10 +15,6 @@ let move;
 let snakeColor = 'red';
 let foodColor = 'blue';
 
-function halt() {
-    clearMove();
-    lose();
-}
 
 function lose() {
     alert(`YOU LOST! YOUR SCORE WAS ${points}`);
@@ -26,8 +22,10 @@ function lose() {
 }
 
 function resetGame() {
+    clearMove();
     board.innerHTML = '';
     snakeArr.length = 0;
+    direction = null;
     createStartNode();
     createFood();
 }
@@ -93,7 +91,7 @@ function moveHeadDown() {
 
     if ((parseInt(head.style.gridRowStart) == 21) || (checkForSnake(rowStart, colStart))) {
         console.log("YOU LOSE");
-        halt();
+        lose();
         return;
     } else if (checkForFood(rowStart, colStart)) {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
@@ -121,7 +119,7 @@ function moveHeadUp() {
 
     if ((parseInt(head.style.gridRowStart) == 1) || (checkForSnake(rowStart, colStart))) {
         console.log("YOU LOSE");
-        halt();
+        lose();
         return;
     } else if (checkForFood(rowStart, colStart)) {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
@@ -151,7 +149,7 @@ function moveHeadRight() {
 
     if ((parseInt(head.style.gridColumnStart) == 21) || (checkForSnake(rowStart, colStart))) {
         console.log("YOU LOSE");
-        halt();
+        lose();
         return;
     } else if (checkForFood(rowStart, colStart)) {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
@@ -181,7 +179,7 @@ function moveHeadLeft() {
 
     if ((parseInt(head.style.gridColumnStart) == 1) || (checkForSnake(rowStart, colStart))) {
         console.log("YOU LOSE");
-        halt();
+        lose();
         return;
     } else if (checkForFood(rowStart, colStart)) {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
