@@ -1,4 +1,4 @@
-import { checkForSnake, checkForFood } from "./checkers.js";
+import { checkForSnake, checkForFood, checkForObstacle } from "./checkers.js";
 import { createNode, boardAppend, boardRemove, lose, snakeArr, head } from "./boardManipulation.js";
 import { setRowStart, setRowEnd, setColumnStart, setColumnEnd } from "./nodeManipulation.js";
 
@@ -26,6 +26,8 @@ export function moveHeadUp() {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
         snakeArr.push(newHead);
         boardAppend(newHead);
+    } else if (checkForObstacle(rowStart, colStart)) {
+        lose();
     } else {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
         snakeArr.push(newHead);
@@ -55,6 +57,8 @@ export function moveHeadDown() {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
         snakeArr.push(newHead);
         boardAppend(newHead);
+    } else if (checkForObstacle(rowStart, colStart)) {
+        lose();
     } else {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
         snakeArr.push(newHead);
@@ -84,6 +88,8 @@ export function moveHeadRight() {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
         snakeArr.push(newHead);
         boardAppend(newHead);
+    } else if (checkForObstacle(rowStart, colStart)) {
+        lose();
     } else {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
         snakeArr.push(newHead);
@@ -114,6 +120,8 @@ export function moveHeadLeft() {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
         snakeArr.push(newHead);
         boardAppend(newHead);
+    } else if (checkForObstacle(rowStart, colStart)) {
+        lose();
     } else {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
         snakeArr.push(newHead);

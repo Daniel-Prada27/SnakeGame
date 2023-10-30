@@ -2,15 +2,20 @@
 import { setDirection, clearMove } from "./movimiento.js";
 import { setRowStart, setRowEnd, setColumnStart, setColumnEnd} from "./nodeManipulation.js";
 import { setPoints, setScore, points } from "./points.js";
+import { checkForFoodNoPoints } from "./checkers.js";
+import { allowObstacles, enableObstacleBtn } from "./gameRules.js";
 
 export let board = document.getElementById('game-board');
 
 export let snakeArr = [];
 export let head;
 export let snakeColor = 'red';
-export let foodColor = 'blue';
+export let foodColor = 'rgb(255, 201, 60)';
+export let obstacleColor = 'blue';
 let min = 1;
 let max = 21;
+
+let obstacleArr = [];
 
 
 function createStartNode() {
@@ -50,6 +55,44 @@ export function createFood() {
 
 }
 
+export function createObstacle() {
+
+    if (!allowObstacles) {
+        return;
+    }
+
+    let newObstacle = createNode();
+
+    let rowStart = getRandomIntInclusive(min, max);
+    let columnStart = getRandomIntInclusive(min, max);
+
+    let newPosition = document.querySelector(`.position-${rowStart}-${columnStart}`)
+
+    let nearUp = document.querySelector(`.position-${rowStart - 1}-${columnStart}`)
+    let nearDown = document.querySelector(`.position-${rowStart + 1}-${columnStart}`)
+    let nearRight = document.querySelector(`.position-${rowStart}-${columnStart + 1}`)
+    let nearLeft = document.querySelector(`.position-${rowStart}-${columnStart - 1}`)
+
+    let nothingNear = (nearUp == null && nearDown == null &&  nearRight == null && nearLeft == null);
+
+
+    if (newPosition == null && nothingNear && !checkForFoodNoPoints(rowStart, columnStart)) {
+        setRowStart(newObstacle, rowStart);
+        setRowEnd(newObstacle, rowStart + 1);
+        setColumnStart(newObstacle, columnStart);
+        setColumnEnd(newObstacle, columnStart + 1);
+        newObstacle.style.backgroundColor = obstacleColor;
+        newObstacle.classList.add(`obstacle-${rowStart}-${columnStart}`);
+        board.appendChild(newObstacle);
+        obstacleArr.push(newObstacle);
+        if (obstacleArr.length > 1) {
+            board.removeChild(obstacleArr.shift())
+        }
+    } else {
+        createObstacle();
+    }
+}
+
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -81,8 +124,10 @@ export function lose() {
 
 export function startGame() {
     clearMove();
+    enableObstacleBtn();
     board.innerHTML = '';
     snakeArr.length = 0;
+    obstacleArr.length = 0;
     setDirection(null);
     setPoints(0);
     setScore('0000');

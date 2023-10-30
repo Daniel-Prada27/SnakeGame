@@ -1,6 +1,7 @@
 
-import { createFood, board, snakeColor, foodColor } from "./boardManipulation.js";
+import { createFood, board, snakeColor, foodColor, createObstacle, obstacleColor } from "./boardManipulation.js";
 import { sumPoints } from "./points.js";
+import { allowObstacles } from "./gameRules.js";
 
 
 
@@ -24,6 +25,31 @@ export function checkForFood(row, col) {
         sumPoints();
         board.removeChild(newPosition);
         createFood();
+        createObstacle();
+        return true;
+    }
+
+    return false;
+}
+
+export function checkForFoodNoPoints(row, col) {
+    let newPosition = document.querySelector(`.food-${row}-${col}`);
+
+   return (newPosition != null);
+}
+
+export function checkForObstacle(row, col) {
+
+    if (!allowObstacles) {
+        return false;
+    }
+
+    let newPosition = document.querySelector(`.obstacle-${row}-${col}`);
+
+    if (newPosition == null) {
+        return false;
+    }
+    if (newPosition.style.backgroundColor == obstacleColor) {
         return true;
     }
 
