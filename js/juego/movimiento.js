@@ -15,25 +15,8 @@ export function moveHeadUp() {
     setColumnStart(newHead, head.style.gridColumnStart);
     setColumnEnd(newHead, head.style.gridColumnStart);
 
-    let rowStart = newHead.style.gridRowStart;
-    let colStart = newHead.style.gridColumnStart;
+    moveAction(newHead, head.style.gridRowStart, 1);
 
-    if ((parseInt(head.style.gridRowStart) == 1) || (checkForSnake(rowStart, colStart))) {
-        console.log("YOU LOSE");
-        lose();
-        return;
-    } else if (checkForFood(rowStart, colStart)) {
-        newHead.classList.add(`position-${rowStart}-${colStart}`);
-        snakeArr.push(newHead);
-        boardAppend(newHead);
-    } else if (checkForObstacle(rowStart, colStart)) {
-        lose();
-    } else {
-        newHead.classList.add(`position-${rowStart}-${colStart}`);
-        snakeArr.push(newHead);
-        boardAppend(newHead);
-        removeTail();
-    }
 
 }
 
@@ -46,25 +29,8 @@ export function moveHeadDown() {
     setColumnStart(newHead, head.style.gridColumnStart);
     setColumnEnd(newHead, head.style.gridColumnStart);
 
-    let rowStart = newHead.style.gridRowStart;
-    let colStart = newHead.style.gridColumnStart;
+    moveAction(newHead, head.style.gridRowStart, 21);
 
-    if ((parseInt(head.style.gridRowStart) == 21) || (checkForSnake(rowStart, colStart))) {
-        console.log("YOU LOSE");
-        lose();
-        return;
-    } else if (checkForFood(rowStart, colStart)) {
-        newHead.classList.add(`position-${rowStart}-${colStart}`);
-        snakeArr.push(newHead);
-        boardAppend(newHead);
-    } else if (checkForObstacle(rowStart, colStart)) {
-        lose();
-    } else {
-        newHead.classList.add(`position-${rowStart}-${colStart}`);
-        snakeArr.push(newHead);
-        boardAppend(newHead);
-        removeTail();
-    }
 }
 
 export function moveHeadRight() {
@@ -76,26 +42,7 @@ export function moveHeadRight() {
     setColumnStart(newHead, parseInt(head.style.gridColumnStart) + 1);
     setColumnEnd(newHead, parseInt(head.style.gridColumnStart) + 1);
 
-    let rowStart = newHead.style.gridRowStart;
-    let colStart = newHead.style.gridColumnStart;
-
-
-    if ((parseInt(head.style.gridColumnStart) == 21) || (checkForSnake(rowStart, colStart))) {
-        console.log("YOU LOSE");
-        lose();
-        return;
-    } else if (checkForFood(rowStart, colStart)) {
-        newHead.classList.add(`position-${rowStart}-${colStart}`);
-        snakeArr.push(newHead);
-        boardAppend(newHead);
-    } else if (checkForObstacle(rowStart, colStart)) {
-        lose();
-    } else {
-        newHead.classList.add(`position-${rowStart}-${colStart}`);
-        snakeArr.push(newHead);
-        boardAppend(newHead);
-        removeTail();
-    }
+    moveAction(newHead, head.style.gridColumnStart, 21);
 
 }
 
@@ -108,26 +55,7 @@ export function moveHeadLeft() {
     setColumnStart(newHead, parseInt(head.style.gridColumnStart) - 1);
     setColumnEnd(newHead, parseInt(head.style.gridColumnStart) - 1);
 
-    let rowStart = newHead.style.gridRowStart;
-    let colStart = newHead.style.gridColumnStart;
-
-
-    if ((parseInt(head.style.gridColumnStart) == 1) || (checkForSnake(rowStart, colStart))) {
-        console.log("YOU LOSE");
-        lose();
-        return;
-    } else if (checkForFood(rowStart, colStart)) {
-        newHead.classList.add(`position-${rowStart}-${colStart}`);
-        snakeArr.push(newHead);
-        boardAppend(newHead);
-    } else if (checkForObstacle(rowStart, colStart)) {
-        lose();
-    } else {
-        newHead.classList.add(`position-${rowStart}-${colStart}`);
-        snakeArr.push(newHead);
-        boardAppend(newHead);
-        removeTail();
-    }
+    moveAction(newHead, head.style.gridColumnStart, 1);
 
 }
 
@@ -163,6 +91,28 @@ export function clearMove() {
 
 export function setDirection(newDirection) {
     direction = newDirection;
+}
+
+function moveAction(node, property, number) {
+    let rowStart = node.style.gridRowStart;
+    let colStart = node.style.gridColumnStart;
+
+    if ((parseInt(property) == number) || (checkForSnake(rowStart, colStart))) {
+        console.log("YOU LOSE");
+        lose();
+        return;
+    } else if (checkForFood(rowStart, colStart)) {
+        node.classList.add(`position-${rowStart}-${colStart}`);
+        snakeArr.push(node);
+        boardAppend(node);
+    } else if (checkForObstacle(rowStart, colStart)) {
+        lose();
+    } else {
+        node.classList.add(`position-${rowStart}-${colStart}`);
+        snakeArr.push(node);
+        boardAppend(node);
+        removeTail();
+    }
 }
 
 function removeTail() {
