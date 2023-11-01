@@ -116,6 +116,7 @@ function moveAction(node, property, number) {
 }
 
 function removeTail() {
+    snakeArr[0].style.visibility = 'hidden';
     boardRemove(snakeArr[0]);
     snakeArr.shift();
 }

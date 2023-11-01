@@ -73,7 +73,7 @@ export function createObstacle() {
     let nearRight = document.querySelector(`.position-${rowStart}-${columnStart + 1}`)
     let nearLeft = document.querySelector(`.position-${rowStart}-${columnStart - 1}`)
 
-    let nothingNear = (nearUp == null && nearDown == null &&  nearRight == null && nearLeft == null);
+    let nothingNear = ((nearUp == null) && (nearDown == null) &&  (nearRight == null) && (nearLeft == null));
 
 
     if (newPosition == null && nothingNear && !checkForFoodNoPoints(rowStart, columnStart)) {
@@ -85,7 +85,13 @@ export function createObstacle() {
         newObstacle.classList.add(`obstacle-${rowStart}-${columnStart}`);
         board.appendChild(newObstacle);
         obstacleArr.push(newObstacle);
-        if (obstacleArr.length > 1) {
+
+        if (obstacleArr.length < 4) {
+            createObstacle()
+        }
+
+        if (obstacleArr.length == 4) {
+            board.removeChild(obstacleArr.shift())
             board.removeChild(obstacleArr.shift())
         }
     } else {
@@ -103,7 +109,7 @@ function getRandomIntInclusive(min, max) {
 export function createNode() {
     let node = document.createElement('div');
     node.style.backgroundColor = snakeColor;
-    node.style.border = '1px solid black';
+    node.style.border = '2px solid black';
     return node;
     // board.appendChild(node)
 }
