@@ -35,7 +35,7 @@ export function checkForFood(row, col) {
 export function checkForFoodNoPoints(row, col) {
     let newPosition = document.querySelector(`.food-${row}-${col}`);
 
-   return (newPosition != null);
+    return (newPosition != null);
 }
 
 export function checkForObstacle(row, col) {
