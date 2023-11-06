@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../css/puntuaciones.css" />
+        <link rel="stylesheet" href="../css/perfil.css" />
+        <script src="../js/perfil.js" defer></script>
         <title>Mi Perfil</title>
     </head>
     <body>
@@ -11,8 +12,14 @@
             <div>The Snake Game</div>
 
             <div id="navLinks">
-                <div class="links">
-                    <a href="./puntuaciones.html">Puntuaciones</a>
+                <div class="links link-container">
+                    <div>
+                        <a href="./juego.html">Jugar</a>
+
+                    </div>
+                    <div id="puntuaciones-link">
+                        <a href="./puntuaciones.html">Puntuaciones</a>
+                    </div>
                 </div>
             </div>
             <div class="links account-icon">
@@ -34,5 +41,19 @@
                 ></a>
             </div>
         </nav>
+        <div id="main-container">
+            <div id="nick-container">
+                <h1>YOUR NICK</h1>
+            </div>
+
+            <div id="bestScore-container">
+                <h2>Mejor Puntaje: 3000</h2>
+                <h2>Con Obstaculos: 2400</h2>
+            </div>
+
+            <div id="logOut-container">
+                <button id="logOut-btn">LOG OUT</button>
+            </div>
+        </div>
     </body>
 </html>

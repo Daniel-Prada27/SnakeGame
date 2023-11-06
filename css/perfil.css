@@ -1,0 +1,76 @@
+:root {
+    --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    background-color: #FCB31B;
+}
+
+#navBar {
+    display: flex;
+    flex-direction: row;
+    background-color: #581223;
+    color: white;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+#navLinks {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+}
+
+.links {
+    margin-left: 30px;
+}
+
+.links, a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.link-container {
+    display: flex;
+}
+
+#puntuaciones-link {
+    margin-left: 2em
+}
+
+.account-icon {
+    /* align-self: flex-end; */
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+#main-container {
+    display: flex;
+    font-family: var(--system-ui);
+    height: 50%;
+    flex-direction: column;
+    align-items: center;
+    background-color: #212121;
+    color: white;
+}
+
+#logOut-btn {
+    background-color: #616161;
+    box-shadow: 4px 5px 5px 0px rgb(0 0 0 / 50%);
+    font-size: 1rem;
+    color: white;
+    padding: 1em 2em;
+    border-radius: 8px;
+    
+}
+
+#logOut-btn:hover {
+    background-color: #D83B3B;
+    color: black;
+    cursor: pointer;
+}
