@@ -40,11 +40,12 @@ body {
     justify-content: space-evenly;
     padding-top: 10px;
 }
-/* 
+
 #obstacleBtn {
-    align-self: flex-start;
-    justify-self: ;
-} */
+    /* background-color: #00FF41; */
+    padding: 0.5em 1em;
+    border-radius: 5px;
+}
 
 #score {
     align-self: center;

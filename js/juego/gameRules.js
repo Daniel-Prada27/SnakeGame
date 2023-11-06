@@ -10,7 +10,7 @@ function changeObstaclePermission() {
     allowObstacles = !allowObstacles;
 
     if(allowObstacles) {
-        obstacleBtn.style.backgroundColor = '#00d300'
+        obstacleBtn.style.backgroundColor = '#00FF41'
     } else {
         obstacleBtn.style.backgroundColor = '';
 
