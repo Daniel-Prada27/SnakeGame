@@ -15,10 +15,6 @@ let move;
 let snakeColor = 'red';
 let foodColor = 'blue';
 
-function halt() {
-    clearMove();
-    lose();
-}
 
 function lose() {
     alert(`YOU LOST! YOUR SCORE WAS ${points}`);
@@ -26,8 +22,12 @@ function lose() {
 }
 
 function resetGame() {
+    clearMove();
     board.innerHTML = '';
     snakeArr.length = 0;
+    direction = null;
+    points = 0;
+    score.textContent = 'SCORE: 0000';
     createStartNode();
     createFood();
 }
@@ -93,7 +93,7 @@ function moveHeadDown() {
 
     if ((parseInt(head.style.gridRowStart) == 21) || (checkForSnake(rowStart, colStart))) {
         console.log("YOU LOSE");
-        halt();
+        lose();
         return;
     } else if (checkForFood(rowStart, colStart)) {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
@@ -121,7 +121,7 @@ function moveHeadUp() {
 
     if ((parseInt(head.style.gridRowStart) == 1) || (checkForSnake(rowStart, colStart))) {
         console.log("YOU LOSE");
-        halt();
+        lose();
         return;
     } else if (checkForFood(rowStart, colStart)) {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
@@ -151,7 +151,7 @@ function moveHeadRight() {
 
     if ((parseInt(head.style.gridColumnStart) == 21) || (checkForSnake(rowStart, colStart))) {
         console.log("YOU LOSE");
-        halt();
+        lose();
         return;
     } else if (checkForFood(rowStart, colStart)) {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
@@ -181,7 +181,7 @@ function moveHeadLeft() {
 
     if ((parseInt(head.style.gridColumnStart) == 1) || (checkForSnake(rowStart, colStart))) {
         console.log("YOU LOSE");
-        halt();
+        lose();
         return;
     } else if (checkForFood(rowStart, colStart)) {
         newHead.classList.add(`position-${rowStart}-${colStart}`);
@@ -235,16 +235,16 @@ function sumPoints() {
 
 window.addEventListener('keydown', (event) => {
     let key = event.code;
-    if (key == 'ArrowRight' && direction != 'left') {
+    if (key == 'ArrowRight' && direction != 'left' && direction != 'right') {
         // moveHeadRight();
         goRight();
-    } else if (key == 'ArrowLeft' && direction != 'right' ) {
+    } else if (key == 'ArrowLeft' && direction != 'right' && direction != 'left') {
         // moveHeadLeft();
         goLeft();
-    } else if (key == 'ArrowUp' && direction != 'down') {
+    } else if (key == 'ArrowUp' && direction != 'down' && direction != 'up') {
         // moveHeadUp();
         goUp();
-    } else if (key == 'ArrowDown' && direction != 'up') {
+    } else if (key == 'ArrowDown' && direction != 'up' && direction != 'down') {
         // moveHeadDown();
         goDown();
     }
