@@ -1,3 +1,8 @@
+:root {
+    --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
 body {
     display: flex;
     height: 100vh;
@@ -5,17 +10,59 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #FCB31B;
+    font-family: var(--system-ui);
+}
+
+#header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+#title {
+    align-self: center;
+    justify-self: center;
+}
+
+#big-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
 .login-container {
     display: flex;
     align-self: center;
-    border: 1px solid black;
+    /* border: 3px solid black; */
+    background-color: #212121;
+    color: white;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     border-radius: 5px;
-    margin-right: 70px;
     margin-bottom: 30px;
     padding: 60px 40px 60px 40px;
     /* background-color: ; */
+}
+
+input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #ffffff;
+}
+
+#loginBtn {
+    background-color: #9bff9f;
+    width: 100%;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+#loginBtn:hover {
+    background-color: #8fe58c;
 }
 
 /* form {

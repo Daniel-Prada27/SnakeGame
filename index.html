@@ -7,23 +7,26 @@
     <title>Login</title>
 </head>
 <body>
-    <header>
-        <h1>THE SNAKE GAME</h1>
+    <header id="header">
+        <h1 id="title">THE SNAKE GAME</h1>
     </header>
-    <div class="login-container">
-        <form action="./html/juego.html" method="get"> //get for github pages
-            <label for="user">Username</label>
-            <br>
-            <input type="text" name="user" placeholder="Enter nickname">
-            <br>
-            <br>
-            <label for="password">Password</label>
-            <br>
-            <input type="password" name="password" placeholder="Password">
-            <br>
-            <br>
-            <input type="submit" value="Login">
-        </form>
+    <div id="big-container">
+        <div class="login-container">
+            <form action="./html/juego.html" method="get">
+                <label for="user">Username</label>
+                <br>
+                <input type="text" name="user" placeholder="Enter nickname">
+                <br>
+                <br>
+                <label for="password">Password</label>
+                <br>
+                <input type="password" name="password" placeholder="Password">
+                <br>
+                <br>
+                <input type="submit" id="loginBtn"  value="Login">
+            </form>
+        </div>
     </div>
+
 </body>
 </html>
