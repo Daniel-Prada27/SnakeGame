@@ -14,10 +14,12 @@ El login por ahora no es funcional, por lo que es posible simplemente dar click 
 
 Es posible navegar a cualquier página desde cualquier página, a excepción del login. Desde el login Sólo es posible entrar a la página de juego, y para regresar al login es necesario cerrar sesión desde la página de perfil.
 
-# Functionamiento del proyecto
+# Funcionamiento del proyecto
 
 ## Login
 El login es un formulario bastante simple, por ahora, al no ser funcional, opera con el método GET para poder 'enviarlo' sin ningún recipiente válido.
+
+Es importante tener en cuenta que el formulario no usará el método GET al momento de implementar un login funcional, pues esto expondría los datos. Se usa únicamente de forma provisional.
 
 ## Navegación
 En todas las páginas a excepción del login, se tiene una barra de navegación en la parte superior.
